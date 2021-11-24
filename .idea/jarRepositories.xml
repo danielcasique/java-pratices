@@ -32,9 +32,9 @@
       <option name="url" value="https://nexus3.disney.com/repository/thirdparty" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="codehausSnapshots" />
-      <option name="name" value="Codehaus Snapshots" />
-      <option name="url" value="http://snapshots.maven.codehaus.org/maven2" />
+      <option name="id" value="java-net-repo" />
+      <option name="name" value="java-net-repo" />
+      <option name="url" value="https://maven.java.net/content/repositories/public/" />
     </remote-repository>
   </component>
 </project>
