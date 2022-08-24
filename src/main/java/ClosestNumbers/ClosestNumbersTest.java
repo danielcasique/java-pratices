@@ -22,7 +22,7 @@ public class ClosestNumbersTest {
     }
 
     @AfterEach
-    public void tearDown() {
+        public void tearDown() {
         System.setOut(standardOut);
     }
 
