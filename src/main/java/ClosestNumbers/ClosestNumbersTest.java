@@ -33,7 +33,7 @@ public class ClosestNumbersTest {
 
         for(int i=0; i<list.size(); i++){
             outputStreamCaptor.reset();
-            ClosestNumbers.closestNumbers(list.get(i));
+            ClosestNumbers.closestNumbersV2(list.get(i));
             assertEquals(result.get(i).trim(), outputStreamCaptor.toString().trim());
         }
     }

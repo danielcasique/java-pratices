@@ -15,7 +15,7 @@ public class ClosestNumbers {
      *
      * The function accepts INTEGER_ARRAY numbers as parameter.
      */
-
+    //Version 1
     public static void closestNumbers(List<Integer> numbers) {
         // Write your code here
         List<Integer> sortedList = numbers.stream().sorted().collect(Collectors.toList());
@@ -40,6 +40,20 @@ public class ClosestNumbers {
             map.get(min.get()).stream().forEach(System.out::println);
         }
 
+    }
+
+    public static void closestNumbersV2(List<Integer> numbers) {
+        // Write your code here
+        List<Integer> sortedList = numbers.stream().sorted().collect(Collectors.toList());
+        Integer minimum = sortedList.get(1) - sortedList.get(0) ;
+        List<String> result = new ArrayList<>();
+        for(int i=0; i<sortedList.size()-1; i++){
+                Integer minusResult = Math.abs(sortedList.get(i+1) - sortedList.get(i));
+                if(minimum.compareTo(minusResult)==0){
+                    result.add(sortedList.get(i) + " " + sortedList.get(i+1));
+                }
+        }
+        result.stream().forEach(System.out::println);
     }
 
     public static void main(String[] args) throws IOException {
