@@ -2,6 +2,9 @@ package PalindromeChecker;
 
 import java.io.*;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
@@ -18,7 +21,39 @@ public class PalindromeChecker {
      *  3. INTEGER_ARRAY endIndex
      *  4. INTEGER_ARRAY subs
      */
+    public static String palindromeCheckerV2(String s, List<Integer> startIndex, List<Integer> endIndex, List<Integer> subs) {
+        // Write your code here
+        StringBuffer result = new StringBuffer();
+        int sizeStartIndex = startIndex.size();
+        int sizeEndIndex = endIndex.size();
+        int size = (sizeStartIndex <= sizeEndIndex)? sizeStartIndex :  sizeEndIndex;
+        for(int i=0; i < size; i++){
+            if(i<startIndex.size() && i<endIndex.size() && startIndex.get(i)<=endIndex.get(i)){
+                StringBuilder subStr = new StringBuilder(s.substring(startIndex.get(i), (endIndex.get(i) + 1)));
+                StringBuilder comp = new StringBuilder(s.substring(startIndex.get(i), (endIndex.get(i) + 1))).reverse();
+                if(comp.toString().equals(subStr.toString())){
+                    result = result.append("1");
+                }else if(i<subs.size() && subs.get(i)>0){
+                    int nroSubs = subs.get(i);
+                    //make substitutions
+                    Map<String, Long> charCount = subStr.chars()
+                            .mapToObj(Character::toString)
+                            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                    Integer pairsNeeded = subStr.length() / 2;
+                    Long existingParis = charCount.values().stream().mapToLong(x -> x/2).sum();
+                    result.append(((pairsNeeded - existingParis) <=  nroSubs) ? "1" : "0");
+                }else{
+                    //there is no subs and the substr it's not palindrome
+                    result = result.append("0");
+                }
+            }else{
+                //there is no way to get a substring
+                result = result.append("0");
+            }
+        }
 
+        return result.toString();
+    }
     public static String palindromeChecker(String s, List<Integer> startIndex, List<Integer> endIndex, List<Integer> subs) {
         // Write your code here
         StringBuffer result = new StringBuffer();
@@ -34,6 +69,12 @@ public class PalindromeChecker {
                 }else if(i<subs.size() && subs.get(i)>0){
                     int nroSubs = subs.get(i);
                     //make substitutions
+                    Map<String, Long> charCount = s.chars()
+                                                .mapToObj(Character::toString)
+                                                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                    Integer pairsNeeded = s.length() / 2;
+                    Long existingParis = charCount.values().stream().mapToLong(x -> x/2).sum();
+                    //
                     boolean isPalindrome = false;
                     for(int k1=0; k1<nroSubs && !isPalindrome; k1++){
                         //cycle for each number of substitutions

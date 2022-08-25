@@ -15,7 +15,7 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(3,3,1);
         List<Integer> subs = List.of(2,0,0);
         String expectedResult = "101";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(3,3,3);
         List<Integer> subs = List.of(0,2,2);
         String expectedResult = "011";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(4,3,3);
         List<Integer> subs = List.of(3,3,0);
         String expectedResult = "110";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(4,3,3);
         List<Integer> subs = List.of(3,3,0);
         String expectedResult = "110";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(0,1,2,3);
         List<Integer> subs = List.of(0,1,1,0);
         String expectedResult = "1110";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
     @Test
@@ -65,7 +65,17 @@ public class PalindromeCheckerTest {
         List<Integer> endIndex = List.of(10);
         List<Integer> subs = List.of(3);
         String expectedResult = "1";
-        assertEquals(expectedResult, PalindromeChecker.palindromeChecker(s,startIndex,endIndex,subs));
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
+    }
+
+    @Test
+    public void case6(){
+        String s = "xxdnssusevu";
+        List<Integer> startIndex = List.of(0);
+        List<Integer> endIndex = List.of(10);
+        List<Integer> subs = List.of(3);
+        String expectedResult = "1";
+        assertEquals(expectedResult, PalindromeChecker.palindromeCheckerV2(s,startIndex,endIndex,subs));
     }
 
 }
