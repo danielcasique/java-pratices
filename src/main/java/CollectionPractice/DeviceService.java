@@ -24,10 +24,6 @@ public class DeviceService {
 
     private MetricClient metricClient;
 
-    public DeviceService() {
-        this.deviceClient = new DeviceClientService();
-        this.metricClient = new MetricClientService();
-    }
 
     public DeviceService(DeviceClient deviceClient, MetricClient metricClient) {
         this.deviceClient = deviceClient;
@@ -37,13 +33,14 @@ public class DeviceService {
     public List<DeviceDetailsDto> getDevicesDetails(Set<UUID> ids) {
         List<Device> deviceList = this.deviceClient.getAllByIdIn(ids);
         Map<UUID, ZonedDateTime> devicesMap = deviceList.stream().collect(Collectors.toMap(Device::getId, Device::getLastRebootTime));
-        List<Metric> metricList = this.metricClient.getAllByDeviceIdIn(ids)
-                                                    .stream()
-                                                    .filter(x -> Objects.nonNull(devicesMap.get(x.getDeviceId())) && x.getTime().isAfter(devicesMap.get(x.getId())))
-                                                    .collect(Collectors.toList());
+        List<Metric> metricList = this.metricClient.getAllByDeviceIdIn(ids);
+        metricList = metricList.stream()
+                    .filter(x -> Objects.nonNull(devicesMap.get(x.getDeviceId())) && x.getTime().isAfter(devicesMap.get(x.getDeviceId())))
+                    .collect(Collectors.toList());
+        List<Metric> finalMetricList = metricList;
         List<DeviceDetailsDto> result = deviceList.stream()
                 .map(x -> new DeviceDetailsDto(x.getId(),x.getName(),x.getLastRebootTime(),
-                        metricList.stream().map(x1 -> new DeviceDetailsDto.MetricDto(x1.getId(), x1.getTime(), x1.getValue())).collect(Collectors.toList())))
+                        finalMetricList.stream().map(x1 -> new DeviceDetailsDto.MetricDto(x1.getId(), x1.getTime(), x1.getValue())).collect(Collectors.toList())))
                 .collect(Collectors.toList());
         return result;
     }
