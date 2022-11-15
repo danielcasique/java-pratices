@@ -10,7 +10,7 @@ there is no room for storage, and they must be resold. Determine the
 remaining number of items to be purchased, or the number that must be sold 
 after the purchase from the primary supplier.
 
-For example, there are containers with itemCount = [10,20,30,40,15]. If the
+For Example, there are containers with itemCount = [10,20,30,40,15]. If the
 target quantity target = 80, the manager will start buying at index 0 and continue
 until all available units are purchased or until at least 80 units have been 
 purchased. The manager will buy containers with 

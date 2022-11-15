@@ -21,7 +21,7 @@ parameter (denoting the visiting team). Thus, in order to get all matches that
 a particular team played in, you need to retrieve matches where the team was the 
 home team and the visiting team.
 
-For example, a GET request to
+For Example, a GET request to
 ```
 https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1=Barcelona&page=2
 ```
@@ -90,7 +90,7 @@ https://jsonmock.hackerrank.com/api/football_matches?year=<year>&page=<page>
 Where <year> is the year of the competition and <page> is the page of the results
 to request. The results might be divided into several pages. Pages are numbered from 1.
 
-For example, a GET request to
+For Example, a GET request to
 ```
 https://jsonmock.hackerrank.com/api/football_matches?year=2011&page=2
 ```
@@ -119,7 +119,7 @@ order to overcome this issue, you are allowed to add an exact value of any of th
 match object fields to the URL query string in order to limit the number of results.
 This capability, if used correctly, can help you avoid examining individual match objects.
 
-For example, performing a request to:
+For Example, performing a request to:
 ```
 https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1goals=1&page=2
 ```

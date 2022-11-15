@@ -20,7 +20,7 @@ A point *belongs* to a triangle if it lies somewhere on or inside the triangle. 
 p = p(xp,xp) : (4,3)
 q = q(xq,yq) : (7,4)
 ```
-![example 0](triangle_1.png)
+![Example 0](triangle_1.png)
 
 First, the triangle abc forms a valid non-degenerate triangle
 

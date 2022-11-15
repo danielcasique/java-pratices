@@ -1,5 +1,3 @@
-package com.casique;
-
 import java.lang.reflect.Method;
 
 class Test{
