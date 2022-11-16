@@ -28,7 +28,9 @@ public class ListToMapPractice {
             }
         }
         return result1;*/
-        Map<Integer, List<String>> result2 =  list.stream().collect(Collectors.groupingBy(String::length, HashMap::new, Collectors.toCollection(ArrayList::new)));
+        Map<Integer, List<String>> result2 =  list
+                .stream()
+                .collect(Collectors.groupingBy(String::length, HashMap::new, Collectors.toCollection(ArrayList::new)));
         return result2;
     }
 

@@ -46,3 +46,6 @@ private List<String> getCreditCardRequisites(List<RequisitesItem> requisites) {
 succededDeposits : 100 items
 requisites: 50 items
 Iterations: 100 * 50 = 5000   => 150
+
+estudiar el clone
+https://www.techiedelight.com/es/clone-method-in-java/
