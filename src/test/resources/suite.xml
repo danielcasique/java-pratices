@@ -8,7 +8,7 @@
             </run>
         </groups>
         <classes>
-            <class name="org.casique.ClosestNumbers.ClosestNumbersNGTest">
+            <class name="org.casique.closestNumbers.ClosestNumbersNGTest">
                 <methods>
                     <include name="case0"/>
 <!--                    <exclude name="nameOfTheMethodToBeExcluded"/>-->
