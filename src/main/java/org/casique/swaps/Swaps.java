@@ -12,9 +12,11 @@ public class Swaps {
         while(i < arr.length){
             if(arr[i] != i + 1){
                 j = ((arr[i]-1)<(arr.length/2))? i+1 : arr.length /2 ;
+                j = (i>=j)? (i+1) : j;
                 cont = true;
                 while (j<arr.length && cont){
                     if(arr[i] > arr[j]){
+                        System.out.printf("cambiando arr[%d]=%d por arr[%d]=%d \n",i, arr[i], j, arr[j]);
                         aux = arr[i];
                         arr[i] = arr[j];
                         arr[j] = aux;
@@ -33,7 +35,10 @@ public class Swaps {
 
 
     public static void main(String[] args)  {
+        //9
         int []arr = {3, 7, 6, 9, 1, 8, 10, 4, 2, 5};
+        //5
+        //int []arr = {7, 1, 3, 2, 4, 5, 6};
         System.out.println(Swaps.minimumSwaps(arr));
     }
 

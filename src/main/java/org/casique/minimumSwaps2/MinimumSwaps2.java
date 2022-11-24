@@ -33,6 +33,7 @@ public class MinimumSwaps2 {
     static int minimumSwaps(int[] arr) {
         return processminimumSwaps(arr, 0, arr.length-1, 0);
     }
+
     public static void main(String[] args) {
         int []arr = {7, 1, 3, 2, 4, 5, 6};
         System.out.println(minimumSwaps(arr));
