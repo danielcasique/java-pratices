@@ -1,6 +1,6 @@
 package org.casique.initializer.blocks;
 
-public class initializerBlocks {
+public class InitializerBlocks {
 
     // Initializer block starts..
     {
@@ -12,7 +12,7 @@ public class initializerBlocks {
 
     // Constructor 1
     // Default constructor
-    public initializerBlocks()
+    public InitializerBlocks()
     {
 
         // Print statement
@@ -27,7 +27,7 @@ public class initializerBlocks {
 
     // Constructor 2
     // Parameterized constructor
-    public initializerBlocks(int x)
+    public InitializerBlocks(int x)
     {
 
         // Print statement
@@ -45,13 +45,17 @@ public class initializerBlocks {
     public static void main(String arr[])
     {
 
+        String textBlock = """
+            "Java Study Guide"
+            by Scott & Jeanne
+        """;
         // Creating variables of class type
-        initializerBlocks obj1, obj2;
+        InitializerBlocks obj1, obj2;
 
         // Now these variables are
         // made to object and interpreted by compiler
-        obj1 = new initializerBlocks();
+        obj1 = new InitializerBlocks();
 
-        obj2 = new initializerBlocks(0);
+        obj2 = new InitializerBlocks(0);
     }
 }
