@@ -3,7 +3,7 @@ package org.casique.swaps;
 public class Swaps {
 
     // Complete the minimumSwaps function below.
-    static int minimumSwaps(int[] arr) {
+    static int minimumSwaps1(int[] arr) {
         int swaps = 0;
         int j = 0;
         int i = 0;
@@ -26,6 +26,26 @@ public class Swaps {
                         j++;
                     }
                 }
+            }else{
+                i++;
+            }
+        }
+        return swaps;
+    }
+
+    static int minimumSwaps(int[] arr) {
+        int swaps = 0;
+        int i = 0;
+        int j = 0;
+        int aux = 0;
+        while(i < arr.length){
+            j = arr[i]-1;
+            if(arr[i] != arr[j]){
+                System.out.printf("cambiando arr[%d]=%d por arr[%d]=%d \n",i, arr[i], j, arr[j]);
+                aux = arr[i];
+                arr[i] = arr[j];
+                arr[j] = aux;
+                swaps++;
             }else{
                 i++;
             }
