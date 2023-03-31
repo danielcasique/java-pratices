@@ -35,7 +35,7 @@ public class InitializerBlocks {
                 "Parameterized constructor invoked");
     }
 
-    {
+    static{
         // This code is executed before every constructor.
         System.out.println(
                 "Common part of constructors invoked 3!!");
