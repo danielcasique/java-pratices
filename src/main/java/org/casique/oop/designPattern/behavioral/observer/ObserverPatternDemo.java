@@ -65,6 +65,11 @@ class HexaObserver extends Observer{
 
     @Override
     public void update() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() );
     }
 }

@@ -40,7 +40,6 @@ class VehicleCalculations {
 
 class Bike extends Vehicle {
 
-    @Override
     void run(String name) {
         System.out.println(name + " is running safely");
     }
