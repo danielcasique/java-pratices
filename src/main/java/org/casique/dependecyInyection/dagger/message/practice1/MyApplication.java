@@ -1,4 +1,4 @@
-package org.casique.dependecyInyection.dagger.message;
+package org.casique.dependecyInyection.dagger.message.practice1;
 
 public class MyApplication {
 
