@@ -1,5 +1,6 @@
 package org.casique.oop.isp;
 
+//Interface Segregation Principle (ISP)
 interface Vehicle {
     public void drive();
     public void stop();

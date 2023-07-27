@@ -1,5 +1,6 @@
 package org.casique.oop.dip;
 
+//Dependency inversion principle
 class Car {
     private Engine engine;
     public Car(Engine e) {
