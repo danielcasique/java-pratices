@@ -9,39 +9,47 @@ import java.util.Random;
 import java.util.function.Consumer;
 import org.jboss.jdeparser.FormatPreferences.Opt;
 
-class Test{
+class Test {
 
   private List<String> list;
 
-  public static Test newInstance(){
+  public static Test newInstance() {
     Test test = new Test();
     test.list = List.of("A", "B", "C");
     return test;
   }
 
-  public Optional<List<String>> getList(){
+  public Optional<List<String>> getList() {
     return Optional.of(this.list);
   }
 
   public Optional<String> getItem(String value) throws InterruptedException {
-    Thread.sleep((new Random()).nextInt(2000)+1000);
+    Thread.sleep((new Random()).nextInt(2000) + 1000);
     return this.list.stream().filter(x -> x.equals(value)).findFirst();
   }
 }
+
 public class RxExample {
 
   public static void main(String[] args) throws InterruptedException {
-    Consumer<String> consume = System.out::println;
+    Consumer<Optional<String>> consume = optionalValue -> {
+      if(optionalValue.isPresent()){
+        System.out.println(optionalValue.get());
+      }else {
+        System.out.println("Item not found");
+      }
+    };
     Test test = Test.newInstance();
     Flowable.fromOptional(test.getList())
-        .flatMapIterable(list -> list)
+        .observeOn(Schedulers.io())
+        .flatMap(Flowable::fromIterable)
         .parallel()
-        .runOn(Schedulers.computation())
+        .runOn(Schedulers.io())
         .map(test::getItem)
+        .doOnNext(consume::accept)
         .sequential()
-        .filter(Optional::isPresent)
-        .map(Optional::get)
-        .subscribe(consume::accept);
+        .doOnComplete(() -> System.out.println("finish!"))
+        .blockingSubscribe();
 
     Thread.sleep(8000);
   }
