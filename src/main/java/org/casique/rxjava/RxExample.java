@@ -35,6 +35,7 @@ class Test {
 public class RxExample {
 
   public static void main(String[] args) throws InterruptedException {
+
     Consumer<Optional<String>> consume = optionalValue -> {
       System.out.println("Consumer : " +  optionalValue + " : "  + Thread.currentThread().getName());
       if(optionalValue.isPresent()){
@@ -45,7 +46,6 @@ public class RxExample {
     };
     Test test = Test.newInstance();
     Flowable.fromOptional(test.getList())
-        .observeOn(Schedulers.io())
         .flatMap(Flowable::fromIterable)
         .parallel()
         .runOn(Schedulers.io())
