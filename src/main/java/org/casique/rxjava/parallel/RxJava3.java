@@ -1,4 +1,5 @@
-package org.casique.rxjava;
+package org.casique.rxjava.parallel;
+
 
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -7,13 +8,13 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
 
-class Test2 {
+class Test3 {
 
   private List<String> list;
 
-  public static Test2 newInstance() {
+  public static Test3 newInstance() {
     System.out.println("newInstance : " + Thread.currentThread().getName());
-    Test2 test = new Test2();
+    Test3 test = new Test3();
     test.list = List.of("A", "B", "C", "D", "E", "F", "G", "H");
     return test;
   }
@@ -30,22 +31,20 @@ class Test2 {
     return this.list.stream().filter(x -> x.equals(value)).findFirst();
   }
 }
-public class RxExample2 {
+public class RxJava3 {
 
   public static void main(String[] args) throws InterruptedException {
-    Consumer<Optional<String>> consume = optionalValue -> {
+    Consumer<String> consume = value -> {
       System.out.println("consumer : " + Thread.currentThread().getName());
-      if(optionalValue.isPresent()){
-        System.out.println(optionalValue.get());
-      }else {
-        System.out.println("Item not found");
-      }
+      System.out.println(value);
     };
-    Test2 test = Test2.newInstance();
+    Test3 test = Test3.newInstance();
     Flowable.fromOptional(test.getList())
         .observeOn(Schedulers.io())
         .flatMap(Flowable::fromIterable)
-        .map(test::getItem)
+        .flatMap(item -> Flowable.just(item)
+            .observeOn(Schedulers.io())
+            .doOnNext(test::getItem))
         .doOnNext(consume::accept)
         .doOnError(error -> System.out.println(error.getMessage()))
         .doOnComplete(() -> System.out.println("finish!"))
@@ -53,5 +52,4 @@ public class RxExample2 {
 
     Thread.sleep(8000);
   }
-
 }
