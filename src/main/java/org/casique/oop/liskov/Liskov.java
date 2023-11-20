@@ -24,6 +24,7 @@ class Rectangle1 {
 }
 
 class Square1 extends Rectangle1 {
+    @Override
     public void setHeight(double height) {
         super.setHeight(height);
         super.setWidth(height);

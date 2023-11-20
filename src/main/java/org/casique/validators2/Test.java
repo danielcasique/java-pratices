@@ -9,9 +9,15 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 class First {
   @Valid
   @NotNull
@@ -21,12 +27,17 @@ class First {
   String third;
 }
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 class Second {
   @NotBlank
   String second1;
 
   @NotBlank
   String second2;
+
+  String second3;
 }
 
 class ValidationUtils {
@@ -50,6 +61,8 @@ public class Test {
 
     First test = new First();
     test.setSecond(new Second());
+    test.getSecond().setSecond3("second3");
+    
 
     ValidationUtils.validate(test);
 
