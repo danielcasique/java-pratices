@@ -14,6 +14,9 @@ public class rx006Example {
         .observeOn(Schedulers.single())
         .subscribe(System.out::println, Throwable::printStackTrace);
 
+
+
+    /*
     Thread.sleep(2000);
 
     ///
@@ -29,6 +32,6 @@ public class rx006Example {
 
     showForeground.subscribe(System.out::println, Throwable::printStackTrace);
 
-    Thread.sleep(2000);
+    Thread.sleep(2000);*/
   }
 }
