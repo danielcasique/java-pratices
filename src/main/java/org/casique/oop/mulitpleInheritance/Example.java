@@ -42,6 +42,7 @@ public class Example
         objB.execute();
         objC.execute();
         objD.execute();
+        //objA = (C) objA;
         objD.execute("John");
     }
 }

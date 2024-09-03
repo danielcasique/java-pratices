@@ -5,6 +5,11 @@ package org.casique.oop.designPattern.behavioral.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+abstract class Observer {
+    protected Subject subject;
+    public abstract void update();
+}
+
 class Subject {
 
     private List<Observer> observers = new ArrayList<Observer>();
@@ -73,13 +78,6 @@ class HexaObserver extends Observer{
         System.out.println( "Hex String: " + Integer.toHexString( subject.getState() ).toUpperCase() );
     }
 }
-
-
-abstract class Observer {
-    protected Subject subject;
-    public abstract void update();
-}
-
 public class ObserverPatternDemo {
     public static void main(String[] args) {
         Subject subject = new Subject();
