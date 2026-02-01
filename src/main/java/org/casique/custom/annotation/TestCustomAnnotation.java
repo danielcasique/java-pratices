@@ -21,7 +21,7 @@ public class TestCustomAnnotation {
       }
     }
 */
-    NumberUtils.INTEGER_ZERO
+   // NumberUtils.INTEGER_ZERO
     ValidatorFactory factoryCar = Validation.buildDefaultValidatorFactory();
     Validator validatorCar = factoryCar.getValidator();
     var violationsCar = validatorCar.validate(car1);
